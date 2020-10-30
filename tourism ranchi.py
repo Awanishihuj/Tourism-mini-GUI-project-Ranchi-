@@ -1,7 +1,12 @@
-import tkinter as tk, threading
+import threading
+import tkinter as tk
+
 import imageio
 from PIL import Image, ImageTk
-config = {"title":"Ranchi tourism", "version":"[Version: 0.0]"}
+
+from menu import menu
+
+config = {"title":"Ranchi tourism", "version":"[Version: 0.1]"}
 class Marquee(tk.Canvas):
     def __init__(self, parent, text, margin=2, borderwidth=1, relief='flat', fps=30):
         tk.Canvas.__init__(self, parent, borderwidth=borderwidth, relief=relief)
@@ -50,6 +55,8 @@ if __name__ == "__main__":
     root.configure(bg="black")
     root.title(config["title"] + " " +config["version"])
     root.state('zoomed')
+    i1 = tk.PhotoImage(file = "icon1.png")
+    root.iconphoto(False, i1)
     Heading = tk.Label(text = "WELLCOME TO RANCHI TOURISM",font = "times 32 bold", bg = "black",fg ="yellow")
     Heading.pack()
     marquee = Marquee(root, text="This Application is developed by Awanish Kumar for those who really intrested to explore the new Horizons of Ranchi the heart of Jharkhand", borderwidth=1, relief="sunken")
@@ -65,7 +72,7 @@ if __name__ == "__main__":
                activebackground='#004c99', activeforeground='white')  
     pilgrimmenu = tk.Menu(menubar, tearoff=0, background='lightblue', foreground='black')
     pilgrimmenu.add_separator()
-    pilgrimmenu.add_command(label = "Pahari Mandir")
+    pilgrimmenu.add_command(label = "Pahari Mandir",command = menu.pahari)
     pilgrimmenu.add_command(label = "Jaganath Mandir")
     pilgrimmenu.add_command(label = "sun temple")
     pilgrimmenu.add_command(label = "shri Hanuman Mandir")
@@ -78,6 +85,25 @@ if __name__ == "__main__":
     parkmenu.add_command(label = "oxygen park")
     menubar.add_cascade(label = "Parks", menu = parkmenu)
 
+    fallmenu = tk.Menu(menubar, tearoff = 0, background = 'lightblue', foreground = 'red')
+    fallmenu.add_separator()
+    fallmenu.add_command(label = "oxygen park")
+    menubar.add_cascade(label = "Falls", menu = fallmenu)
+
+    hangmenu = tk.Menu(menubar, tearoff = 0, background = 'lightblue', foreground = 'red')
+    hangmenu.add_separator()
+    hangmenu.add_command(label = "oxygen park")
+    menubar.add_cascade(label = "Hangout", menu = hangmenu)
+
+    dammenu = tk.Menu(menubar, tearoff = 0, background = 'lightblue', foreground = 'red')
+    dammenu.add_separator()
+    dammenu.add_command(label = "oxygen park")
+    menubar.add_cascade(label = "Dam's", menu = dammenu)
+
+    musmenu = tk.Menu(menubar, tearoff = 0, background = 'lightblue', foreground = 'red')
+    musmenu.add_separator()
+    musmenu.add_command(label = "oxygen park")
+    menubar.add_cascade(label = "Museam", menu = musmenu)
     root.config(menu=menubar)
     root.mainloop()
 
